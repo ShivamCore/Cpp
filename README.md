@@ -1,92 +1,55 @@
-# 🔷 Shivam's C++ Vault
+# C++ Learning Repository
 
-Welcome to my personal C++ repository — a structured collection of programs and projects built as I learn and master the language. This repo includes:
+A structured collection of C++ programs written while learning the language, from basic syntax through OOP, the STL, file handling, and a few small console and Qt desktop projects. This is a learning repository, not a library or framework — each file is a self-contained program.
 
-- ✍️ Fundamental concepts
-- 📚 Topic-wise practice sets
-- 💻 Hands-on mini projects
-- 📂 Real-world use case simulation (ATM Machine)
+## Layout
 
+| Folder | Contents | Count |
+|---|---|---|
+| `Basics programs/` | I/O, conditionals, arithmetic, and intro OOP (constructors, inheritance, operator overloading, `static` members, `friend` classes) | 26 |
+| `Array/` | 1D/2D arrays: sum, min/max, most-frequent, second-largest | 9 |
+| `String/` | Reverse, compare, replace char/word, delete vowels, swap | 7 |
+| `Functions/` | Overloading, overriding, virtual functions, parameter/return variants | 9 |
+| `Loop programs/` | Factorial, Armstrong number, natural-number sums | 6 |
+| `Pointer/` | Pointer-to-array, pointer-to-function, applications | 3 |
+| `Patterns/` | Star/number patterns | 2 |
+| `STL/` | Vector, list, set/multiset, map/multimap, unordered variants, stack, queue, priority queue, `<algorithm>` | 15 |
+| `File Handling/` | `seekg`/`seekp`/`tellg`/`tellp`, reading/writing objects with `fstream` | 5 |
+| `Multi-threading/` | `std::thread` with a function, a class, and a lambda | 3 |
+| `Projects/` | Larger programs (see below) | 5 |
 
+## Projects
 
-## 📁 Folder Structure
+| Project | Stack | What it does |
+|---|---|---|
+| **ATM Machine** (`Projects/ATM MACHINE/`) | Console, OOP | Account login (account number + PIN), balance check, withdrawal, mobile-number update; encapsulated `atm` class |
+| **Student Management System** (`Projects/Student Management System/`) | Console, binary `fstream` | Add / view / delete student records with a recoverable "trash" file |
+| **Android Calculator** (`Projects/AndroidCalculator/`) | Qt (`.pro`, `.ui`, C++) | GUI calculator; includes a screenshot (`SS.png`) |
+| **Car Booking System** (`Projects/CarBookingSystem/`) | Qt (`.pro`, `.ui`, C++) | Login, add-car, book-car, and main-menu windows |
+| **Keylogger** (`Projects/Keylogger/`) | Windows API, console | A Windows-only keystroke logger written as a systems-programming exercise with `Windows.h`. Educational; see that folder's own README. |
 
-| Folder           | Description                                  |
-|------------------|----------------------------------------------|
-| `Basics programs`| Simple programs covering syntax & I/O        |
-| `Functions`      | Function declaration, overloading, recursion |
-| `Arrays`         | 1D & 2D arrays, manipulation                 |
-| `Pointer`        | Pointer basics and applications              |
-| `String`         | String handling, input/output, operations    |
-| `Loop programs`  | While, do-while, for loops                   |
-| `Patterns`       | Number, star, and complex pattern programs   |
-| `Projects`       | Real-world mini projects using OOP & logic   |
+Each project folder has its own README.
 
+## Building and running
 
+The console programs are single files. With a C++17 compiler:
 
-## 🚀 Featured Project
+```bash
+g++ -std=c++17 "Projects/ATM MACHINE/ATM MACHINE.cpp" -o atm && ./atm
+g++ -std=c++17 -pthread "Multi-threading/Multi-threading with function.cpp" -o mt && ./mt
+```
 
-### 🔹 [ATM Machine Simulator](./Projects/ATM%20MACHINE)
+The two Qt projects (`AndroidCalculator`, `CarBookingSystem`) are built with Qt — open the `.pro` file in Qt Creator or run `qmake && make`. The Keylogger uses the Win32 API and compiles only on Windows (e.g. MinGW or MSVC).
 
-> A fully functional ATM simulation in C++ using classes, encapsulation, and input handling.
+## Compile status (verified 2026-10-28, g++ 17, syntax-only)
 
-- 💳 User login with Account No & PIN
-- 💰 Balance check, withdrawal, mobile number update
-- 🔐 Encapsulated class design
-- 🧠 OOP concepts in action
+Of the 82 console programs outside the Qt and Win32 folders, **77 compile cleanly** and **5 do not**, for two reasons worth noting:
 
-## 🎓 Learning Outcomes
+- Two files declare `void main()` (legacy Turbo C++ style), which modern g++ rejects — `main` must return `int`.
+- The remaining three contain a second stray `main`, a duplicated block, or a leftover character from editing.
 
-- ✅ Mastered basics of C++ syntax and structure
-- ✅ Hands-on with arrays, functions, loops, pointers
-- ✅ Understood core object-oriented principles
-- ✅ Created real-world C++ application simulations
+These are early files kept as-is for history. The multithreading programs need `-pthread`. The Qt and Windows projects were not built here (no Qt toolchain / not Windows).
 
-## 🚀 Featured Project
+## Notes
 
-### 🔹 [Student Management System](./Projects/Student%20Management%20System)
-
-> A complete student record management app in C++ using classes, binary file handling, and pointer-based I/O.
-
-- 📝 Add, view, and delete student records
-- 🗑️ Recover deleted entries from Trash
-- 💾 Binary file I/O with `fstream`
-- 🧠 Object-oriented design with class encapsulation
-
-## 🎓 Learning Outcomes
-
-- ✅ Practiced file handling with binary streams
-- ✅ Built CRUD operations using OOP principles
-- ✅ Gained experience with pointers, classes, and memory
-- ✅ Simulated a real-world academic record system in C++
-
-## 🚀 Featured Project
-
-### 🔹 [C++ Keylogger (Windows Only)](./Projects/Keylogger)
-
-> A hidden keylogger tool written in C++ using Windows API for educational system-level learning.
-
-- 🛡️ Uses `GetAsyncKeyState()` to monitor keystrokes  
-- 📥 Logs alphanumeric and special keys into `Data.txt`  
-- 🔐 Detects modifier keys and combinations (Shift + Number, etc.)  
-- 🎯 Hides console window using `ShowWindow()`  
-- 🧠 Practice Windows header files and low-level event capturing
-
-## 🎓 Learning Outcomes
-
-- ✅ Explored low-level system programming on Windows  
-- ✅ Gained hands-on experience with `Windows.h` and key state monitoring  
-- ✅ Understood real-time file I/O and virtual key logic  
-- ✅ Developed stealth applications using console control
-## 🚧 In Progress
-
-This repository is being actively updated as I learn new topics and build more projects in C++.
-
-
-
-## 🌐 Connect with Me
-
-- 🔗 [LinkedIn](https://linkedin.com/in/shivamm-mishraa)
-- 💻 [GitHub Profile](https://github.com/ShivamCore)
-
-> *“Code hard, build strong, stay original.”*
+These are study exercises, written over June–July 2025 as the author learned C++. They are preserved as a record of that progression rather than maintained as production code; the known compile issues above reflect that.

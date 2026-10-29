@@ -4,7 +4,7 @@ using namespace std;
 
 
 
-void main()
+int main()
 
 {
 
@@ -27,5 +27,7 @@ sum = sum + arr[i];
 cout << "Sum of Array = " << sum;
 
 
+
+return 0;
 
 }

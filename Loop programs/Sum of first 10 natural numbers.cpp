@@ -1,26 +1,22 @@
-//METHOD 1 USING FOR LOOP
-
 #include <iostream>
 using namespace std;
 
-int main( )
+//METHOD 1 USING FOR LOOP
+
+int sumUsingFor( )
 {
     int sum=0;
     
     for (int i=1; i<11; i++)
     { sum += i;} //same as sum  = sum + i
-    cout << "The sum of the first 10 natural numbers is:" << sum << endl;
     
-    return 0;
+    return sum;
 }
 
 
 //METHOD 2 USING WHILE LOOP
 
-#include <iostream>
-using namespace std;
-
-int main( )
+int sumUsingWhile( )
 {
     int sum=0;
     int i = 1;
@@ -29,7 +25,15 @@ int main( )
         sum += i;
         i++;
     }
-    cout << "The sum of the first 10 natural numbers is:" << sum << endl;
+    
+    return sum;
+}
+
+
+int main( )
+{
+    cout << "The sum of the first 10 natural numbers is:" << sumUsingFor() << endl;
+    cout << "The sum of the first 10 natural numbers is:" << sumUsingWhile() << endl;
     
     return 0;
 }

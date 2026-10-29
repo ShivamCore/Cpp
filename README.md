@@ -41,15 +41,26 @@ g++ -std=c++17 -pthread "Multi-threading/Multi-threading with function.cpp" -o m
 
 The two Qt projects (`AndroidCalculator`, `CarBookingSystem`) are built with Qt — open the `.pro` file in Qt Creator or run `qmake && make`. The Keylogger uses the Win32 API and compiles only on Windows (e.g. MinGW or MSVC).
 
-## Compile status (verified 2026-10-28, g++ 17, syntax-only)
+## Compile status (verified 2026-10-29, g++ `-std=c++17`, syntax-only)
 
-Of the 82 console programs outside the Qt and Win32 folders, **77 compile cleanly** and **5 do not**, for two reasons worth noting:
+**All 85 console programs outside the Qt and Win32 folders compile cleanly.**
 
-- Two files declare `void main()` (legacy Turbo C++ style), which modern g++ rejects — `main` must return `int`.
-- The remaining three contain a second stray `main`, a duplicated block, or a leftover character from editing.
+Six of them did not, and were fixed rather than left as they were:
 
-These are early files kept as-is for history. The multithreading programs need `-pthread`. The Qt and Windows projects were not built here (no Qt toolchain / not Windows).
+| Problem | Files | Fix |
+|---|---|---|
+| `void main()` (legacy Turbo C++ style), which modern g++ rejects | 1 | `int main()` with an explicit `return 0` |
+| A second `main` in the same file, from keeping two solutions side by side | 2 | The alternatives became named functions that one `main` calls, so both methods are still shown and still run |
+| A `default:` label left behind when a `switch` became an `if`/`else` chain | 1 | Removed; the `else` branch already handled that case |
+| `char A[6] = "Academy"` — seven characters plus the terminator in a six-byte array | 1 | Sized from the initializer, and the write length corrected to 7 |
+| A stray character left over from editing | 1 | Removed |
+
+Each fixed program was also run to confirm it behaves as intended — the two sum
+programs agree on 55, the digit extractor returns 4/5/6 for 456, and the
+`seekp` demo overwrites from offset 3 as it should.
+
+The multithreading programs need `-pthread`. The Qt and Windows projects were not built here (no Qt toolchain / not Windows).
 
 ## Notes
 
-These are study exercises, written over June–July 2025 as the author learned C++. They are preserved as a record of that progression rather than maintained as production code; the known compile issues above reflect that.
+These are study exercises, written over June–July 2025 as the author learned C++, and preserved as a record of that progression rather than maintained as production code. The compile errors they had accumulated have since been fixed, and the table above says what each one was.

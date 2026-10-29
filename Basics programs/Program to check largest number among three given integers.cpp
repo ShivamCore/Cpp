@@ -32,7 +32,6 @@ int main( )
     else
         cout <<"invalid input" <<"\t";
     
-    default:
-        cout << "invalid input";    return 0;
+    return 0;
 }
 
